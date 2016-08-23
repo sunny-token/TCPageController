@@ -24,9 +24,10 @@
     btn.frame = CGRectMake(100, 100, 100, 100);
     [btn setTitle:@"go" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor greenColor];
     [self.view addSubview:btn];
     [btn addTarget:self action:@selector(gotoNextView) forControlEvents:UIControlEventTouchUpInside];
-    
+    self.title = @"test";
 }
 
 -(void)gotoNextView

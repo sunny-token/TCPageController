@@ -23,18 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
+    self.title = @"分页界面";
 }
 
 - (void)loadData
 {
     //在这初始化数据
     if (self.menuTitles.count == 0) {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 10; i++) {
             CategoryListDTO *allDto = [[CategoryListDTO alloc] init];
             allDto.categName = [NSString stringWithFormat:@"第%d页", i];
             [self.menuTitles addObject:allDto];
         }
-//        [self configMoreView];
     }
 }
 
@@ -45,13 +45,7 @@
     NSString *indexStr = [NSString stringWithFormat:@"%ld", (long)index];
     if (![self.viewDic objectForKey:indexStr]) {
         view = [[UIViewController alloc] init];
-        view.view.backgroundColor = [UIColor yellowColor];
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundColor:[UIColor whiteColor]];
-        btn.frame = CGRectMake(100, 100, 50, 50);
-        [btn setTitle:[NSString stringWithFormat:@"%ld",(long)index] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [view.view addSubview:btn];
+        view.view.backgroundColor = [UIColor colorWithRed:((arc4random()%255)/255.0) green:((arc4random()%255)/255.0) blue:((arc4random()%255)/255.0) alpha:1.0];
         [self.viewDic setObject:view forKey:indexStr];
     }else {
         view = [self.viewDic objectForKey:indexStr];
